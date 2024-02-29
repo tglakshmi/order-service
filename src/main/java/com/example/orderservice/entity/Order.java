@@ -1,36 +1,42 @@
 package com.example.orderservice.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.Data;
+
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Table(name= "order", schema = "web")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
     private Long id;
-    @Column(name="Order_Date")
+   
+    @Column(name="order_date")
     private LocalDate orderDate;
-    @Column(name="Order_Amount")
-    private String orderAmount;
-    @Column(name="Order_Type")
-    private String orderType;
-    @Column(name="Currency_Code")
+    
+    @Column(name="order_amount")
+    private Double orderAmount;
+    
+    @Column(name="order_type")
+    private OrderType orderType;
+    
+    @Column(name="currency_code")
     private String currencyCode;
-    @Column(name="customerID")
-    private String customerID;
-    @OneToMany(cascade =CascadeType.ALL,mappedBy = "order")
-    private List<Product> orderLineItem=new ArrayList<>();
+    
+    @Column(name="customer_iD")
+    private Long customerId;
+    
+    @OneToMany(cascade =CascadeType.ALL, mappedBy = "order")
+    private Set<LineItem> lineItems = new HashSet<>();
 }
