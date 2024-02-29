@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name= "product", schema = "web")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )

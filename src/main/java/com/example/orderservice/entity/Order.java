@@ -16,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name= "order", schema = "web")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
