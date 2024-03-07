@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class ShipperDto {
-    private Long id;
 
     private String companyName;
 

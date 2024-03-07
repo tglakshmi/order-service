@@ -21,7 +21,7 @@ public class OrderController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<OrderDto> getAllOrders()
-    {
+                {
         return orderService.getAllOrders();
     }
 }

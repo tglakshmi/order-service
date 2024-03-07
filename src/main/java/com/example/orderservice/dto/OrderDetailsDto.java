@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @Builder
 public class OrderDetailsDto {
-    private Long id;
+
 
     private Long orderNumber;
 
