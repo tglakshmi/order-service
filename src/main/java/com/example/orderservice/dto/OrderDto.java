@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -38,7 +39,7 @@ public class OrderDto {
 
     private String customerID;
 
-    private List<Shipper> shippers;
+    private Set<ShipperDto> shippers;
 
-    private List<Payment> paymentList;
+    private Set<PaymentDto> paymentList;
 }

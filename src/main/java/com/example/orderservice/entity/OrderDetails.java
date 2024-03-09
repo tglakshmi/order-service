@@ -48,9 +48,9 @@ public class OrderDetails {
     @Column(name="bill_date")
     private LocalDate billDate;
 
-    @OneToMany(cascade =CascadeType.ALL,mappedBy = "orderDetails")
-    private List<Order> orders=new ArrayList<>();
-
-    @OneToMany(cascade =CascadeType.ALL,mappedBy = "orderDetails")
-    private List<Product> products=new ArrayList<>();
+//    @OneToMany(cascade =CascadeType.ALL,mappedBy = "orderDetails")
+//    private List<Order> orders=new ArrayList<>();
+//
+//    @OneToMany(cascade =CascadeType.ALL,mappedBy = "orderDetails")
+//    private List<Product> products=new ArrayList<>();
 }

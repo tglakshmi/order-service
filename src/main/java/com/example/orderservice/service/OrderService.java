@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
 @Slf4j
 public class OrderService {
     private OrderRepository orderRepository;
-    private OrderDetailsRepository orderDetailsRepository;
+
     private PaymentRepository paymentRepository;
-    private ProductRepository productRepository;
+
     private ShipperRepository shipperRepository;
    OrderTransformer orderTransformer;
 
@@ -33,8 +33,9 @@ public class OrderService {
 //        return orders.stream().map(this::entityToDto).collect(Collectors.toList());
         List<Order> orders = orderRepository.findAll();
         return orders.stream()
-                .map(orderTransformer::mapToOrder)
+                .map(orderTransformer::mapToOrderDTO)
                 .collect(Collectors.toList());
+
     }
 
 
@@ -67,6 +68,15 @@ public class OrderService {
 //            return dto;
 //        }).collect(Collectors.toList());
 //    }
+public OrderDto createOrder(OrderDto orderDto) {
+    Order dbOrder = OrderTransformer.mapToOrder(orderDto);
+
+    Order updatedOrder =  orderRepository.save(dbOrder);
+
+    OrderDto order = OrderTransformer.mapToOrderDTO(updatedOrder);
+
+    return order;
+}
 
 
 }

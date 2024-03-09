@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -52,13 +51,13 @@ public class Order {
     @Column(name="customerid")
     private String customerID;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="orderdetails_id")
-    private OrderDetails orderDetails;
+//    @ManyToOne(fetch=FetchType.LAZY)
+//    @JoinColumn(name="orderdetails_id")
+//    private OrderDetails orderDetails;
 
     @OneToMany(cascade =CascadeType.ALL,mappedBy = "order")
-    private List<Shipper> shippers=new ArrayList<>();
+    private Set<Shipper> shippers=new HashSet<>();
 
     @OneToMany(cascade =CascadeType.ALL,mappedBy = "order")
-    private List<Payment> paymentList=new ArrayList<>();
+    private Set<Payment> paymentList=new HashSet<>();
 }

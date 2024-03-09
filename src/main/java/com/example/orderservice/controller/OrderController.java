@@ -1,14 +1,13 @@
 package com.example.orderservice.controller;
 
 import com.example.orderservice.dto.OrderDto;
+import com.example.orderservice.entity.Order;
 import com.example.orderservice.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +21,12 @@ public class OrderController {
     @ResponseStatus(HttpStatus.OK)
     public List<OrderDto> getAllOrders()
                 {
-        return orderService.getAllOrders();
+                    return orderService.getAllOrders();
     }
+    @PostMapping
+    public ResponseEntity<OrderDto> createOrder(@RequestBody OrderDto orderDto) {
+        OrderDto order = orderService.createOrder(orderDto);
+        return ResponseEntity.status(HttpStatus.CREATED.value()).body(order);
+    }
+
 }

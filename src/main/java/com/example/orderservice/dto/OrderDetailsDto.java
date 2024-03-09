@@ -35,7 +35,7 @@ public class OrderDetailsDto {
 
     private LocalDate billDate;
 
-    private List<Order> orders;
-
-    private List<Product> products;
+//    private List<Order> orders;
+//
+//    private List<Product> products;
 }
