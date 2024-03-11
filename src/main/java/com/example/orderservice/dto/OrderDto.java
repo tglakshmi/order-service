@@ -37,7 +37,7 @@ public class OrderDto {
 
     private LocalDate paymentDate;
 
-    private String customerID;
+    private Long customerID;
 
     private Set<ShipperDto> shippers;
 

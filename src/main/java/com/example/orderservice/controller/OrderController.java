@@ -28,5 +28,16 @@ public class OrderController {
         OrderDto order = orderService.createOrder(orderDto);
         return ResponseEntity.status(HttpStatus.CREATED.value()).body(order);
     }
-
+    @GetMapping("/orders/{id}")
+    public OrderDto getOrderById(@PathVariable Long id) {
+        return orderService.getOrderById(id);
+    }
+    @PutMapping("/orders/{id}")
+    public OrderDto updateOrder(@PathVariable Long id, @RequestBody OrderDto updatedOrderDto) {
+        return orderService.updateOrder(id, updatedOrderDto);
+    }
+    @DeleteMapping("/orders/{id}")
+    public void deleteOrderById(@PathVariable Long id) {
+        orderService.deleteOrderById(id);
+    }
 }

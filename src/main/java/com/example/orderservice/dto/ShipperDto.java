@@ -17,8 +17,10 @@ import lombok.NoArgsConstructor;
 
 public class ShipperDto {
 
+    private Long id;
     private String companyName;
 
     private String phone;
+
 
 }

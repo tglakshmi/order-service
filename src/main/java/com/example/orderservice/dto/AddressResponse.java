@@ -1,6 +1,5 @@
-package com.demoproject.customerservice.dto;
+package com.example.orderservice.dto;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

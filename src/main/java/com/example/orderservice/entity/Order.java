@@ -1,21 +1,20 @@
 package com.example.orderservice.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.time.LocalDate;
 import java.util.*;
 
 @Entity
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Table(name="orderschema.order")
+@ToString
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,15 +48,15 @@ public class Order {
     private LocalDate paymentDate;
 
     @Column(name="customerid")
-    private String customerID;
+    private Long customerID;
 
 //    @ManyToOne(fetch=FetchType.LAZY)
 //    @JoinColumn(name="orderdetails_id")
 //    private OrderDetails orderDetails;
 
     @OneToMany(cascade =CascadeType.ALL,mappedBy = "order")
-    private Set<Shipper> shippers=new HashSet<>();
+    private Set<Shipper> shippers;
 
     @OneToMany(cascade =CascadeType.ALL,mappedBy = "order")
-    private Set<Payment> paymentList=new HashSet<>();
+    private Set<Payment> paymentList;
 }
